@@ -6,23 +6,25 @@
   <form>
     <div class="mb-3">
       <label for="nameInput" class="form-label">Name</label>
-      <input [(ngModel)]="name" type="text" class="form-control" id="nameInput" placeholder="your name here" />
+      <input type="text" class="form-control" id="nameInput" placeholder="name here" [(ngModel)]="name" name="nameInput"/>
     </div>
     <div class="mb-3">
       <label for="passwordInput" class="form-label">Password</label>
-      <input type="password" class="form-control" id="passwordInput" />
+      <input  type="password" class="form-control" id="passwordInput" placeholder="password here" [(ngModel)]="password" name="passwordInput" />
     </div>
     <div class="mb-3">
       <label for="emailInput" class="form-label">Email</label>
-      <input type="email" class="form-control" id="emailInput" />
-
+      <input type="email" class="form-control" id="emailInput" placeholder="email here" [(ngModel)]="email" name="emailInput" />
       <div class="d-grid gap-2 mt-4">
-        <button class="btn btn-primary" type="submit" (click)="changeName()">Create Account</button>
+        <button class="btn btn-primary" type="submit" (click)="changeAccount()">Create Account</button>
       </div>
       
     
-<p></p><p></p><p></p><p></p>
-{{name}}
+<p>test name: {{name}}</p>
+<p>test password: {{password}}</p>
+<p> test email: {{email}}</p>
+
+
 <p>Welcome to the registration page. Please choose an option above to proceed with your registration.</p>
     
 

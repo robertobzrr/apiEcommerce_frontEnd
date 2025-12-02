@@ -12,7 +12,9 @@ import { FormsModule } from '@angular/forms';
 export class RegisterAccountComponent {
 
   
-  name = 'RobertoTest';
+  name: string = '';
+  password: string = '';
+  email: string = '';
 
 
   constructor() { 
@@ -32,8 +34,11 @@ export class RegisterAccountComponent {
   }
 
 
-  changeName(){
+  changeAccount(){
     console.log('new name:', this.name);
+    console.log('new password:', this .password);
+    console.log('new email:', this.email);
+    alert('Name changed to: ' + this.name + '\nPassword changed to: ' + this.password + '\nEmail changed to: ' + this.email);
   }
 
 
