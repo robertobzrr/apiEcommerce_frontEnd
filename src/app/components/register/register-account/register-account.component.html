@@ -6,7 +6,7 @@
   <form>
     <div class="mb-3">
       <label for="nameInput" class="form-label">Name</label>
-      <input type="text" class="form-control" id="nameInput" />
+      <input [(ngModel)]="name" type="text" class="form-control" id="nameInput" placeholder="your name here" />
     </div>
     <div class="mb-3">
       <label for="passwordInput" class="form-label">Password</label>
@@ -17,9 +17,16 @@
       <input type="email" class="form-control" id="emailInput" />
 
       <div class="d-grid gap-2 mt-4">
-        <button class="btn btn-primary" type="submit">Create Account</button>
+        <button class="btn btn-primary" type="submit" (click)="changeName()">Create Account</button>
       </div>
       
+    
+<p></p><p></p><p></p><p></p>
+{{name}}
+<p>Welcome to the registration page. Please choose an option above to proceed with your registration.</p>
+    
+
+
     </div>
   </form>
 </div>

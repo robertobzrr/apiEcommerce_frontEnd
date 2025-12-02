@@ -10,20 +10,4 @@ import { RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
 
-  constructor() { 
-    console.log('REGISTER INIATIALIZED');
-  }
-
-  ngOnInit(){
-    console.log('REGISTER ngOnInit CALLED');
-  }  
-
-  ngOnChanges(){
-    console.log('REGISTER ngOnChanges CALLED');
-  }
-
-  ngAfterViewInit(){
-    console.log('REGISTER ngAfterViewInit CALLED');
-  }
-
 }
