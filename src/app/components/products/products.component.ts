@@ -21,7 +21,7 @@ export class ProductsComponent {
   }
 
   getProducts() {
-    console.log('products from database...');
+    console.log('products from DB');
     
     this.productService.findAllProducts().subscribe({
       next: (productsFromAPI) => {

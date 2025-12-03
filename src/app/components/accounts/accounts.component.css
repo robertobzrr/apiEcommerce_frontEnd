@@ -86,3 +86,22 @@
     padding: 8px 10px;
   }
 }
+
+/* Loading and no-users messages */
+.loading,
+.no-users {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+}
+
+.loading h3,
+.no-users h3 {
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+.no-users p {
+  color: #6c757d;
+  font-style: italic;
+}

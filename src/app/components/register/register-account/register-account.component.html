@@ -3,34 +3,28 @@
   <h4>Register your account</h4>
 
   <p></p>
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label for="nameInput" class="form-label">Name</label>
-      <input type="text" class="form-control" id="nameInput" placeholder="name here" [(ngModel)]="name" name="nameInput"/>
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" [(ngModel)]="user.name" name="name"/>
     </div>
     <div class="mb-3">
-      <label for="passwordInput" class="form-label">Password</label>
-      <input  type="password" class="form-control" id="passwordInput" placeholder="password here" [(ngModel)]="password" name="passwordInput" />
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="user.email" name="email"/>
     </div>
     <div class="mb-3">
-      <label for="emailInput" class="form-label">Email</label>
-      <input type="email" class="form-control" id="emailInput" placeholder="email here" [(ngModel)]="email" name="emailInput" />
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" [(ngModel)]="user.password" name="password"/>
       <div class="d-grid gap-2 mt-4">
-        <button class="btn btn-primary" type="submit" (click)="changeAccount()">Create Account</button>
+        <button class="btn btn-primary" type="submit">Create account</button>
       </div>
-      
-    
-<p>test name: {{name}}</p>
-<p>test password: {{password}}</p>
-<p> test email: {{email}}</p>
-
-@if (name === 'robertobzrr') {
-  <span>Welcome, robertobzrr</span>
-}
-
-
-
-
     </div>
   </form>
+
+  @if (message) {
+    <div class="mb-3">
+      <div class="alert alert-info">{{ message }}</div>
+    </div>
+  }
+
 </div>

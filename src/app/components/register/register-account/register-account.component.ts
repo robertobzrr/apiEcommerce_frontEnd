@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AccountService, UserRequestDTO } from '../../../services/account/account.service';
 
 @Component({
   selector: 'app-register-account',
@@ -11,35 +12,38 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterAccountComponent {
 
-  
-  name: string = '';
-  password: string = '';
-  email: string = '';
+  private accountService = inject(AccountService);
 
+  user = {
+    name: '',
+    email: '',
+    password: ''
+  };
+
+  message = '';
 
   constructor() { 
-    console.log('REGISTER INIATIALIZED');
+    console.log('REGISTER ACCOUNT INITIALIZED');
   }
 
-  ngOnInit(){
-    console.log('REGISTER ngOnInit CALLED');
-  }  
+  onSubmit() {
+    if (!this.user.name || !this.user.email || !this.user.password) {
+      this.message = 'enter all boxs infos';
+      return;
+    }
 
-  ngOnChanges(){
-    console.log('REGISTER ngOnChanges CALLED');
+    this.message = '';
+
+    this.accountService.createUser(this.user).subscribe({
+      next: () => {
+        this.message = 'created';
+        this.user = { name: '', email: '', password: '' };
+      },
+      error: (error) => {
+        this.message = 'error.';
+        console.error('Error:', error);
+      }
+    });
   }
-
-  ngAfterViewInit(){
-    console.log('REGISTER ngAfterViewInit CALLED');
-  }
-
-
-  changeAccount(){
-    console.log('new name:', this.name);
-    console.log('new password:', this .password);
-    console.log('new email:', this.email);
-    alert('Name changed to: ' + this.name + '\nPassword changed to: ' + this.password + '\nEmail changed to: ' + this.email);
-  }
-
 
 }
