@@ -17,10 +17,10 @@ export class ProductsComponent {
   
 
   ngOnInit() {
-    this.getProductsFromDatabase();
+    this.getProducts();
   }
 
-  getProductsFromDatabase() {
+  getProducts() {
     console.log('products from database...');
     
     this.productService.findAllProducts().subscribe({
