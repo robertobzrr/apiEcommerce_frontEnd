@@ -21,7 +21,6 @@ export class RegisterProductComponent {
   };
 
   message = '';
-  isCreating = false;
 
   onSubmit() {
     if (!this.product.name || this.product.price <= 0) {
@@ -29,17 +28,14 @@ export class RegisterProductComponent {
       return;
     }
 
-    this.isCreating = true;
     this.message = '';
     this.productService.createProduct(this.product).subscribe({
       next: () => {
         this.message = 'created';
-        this.isCreating = false;
         this.product = { name: '', description: '', price: 0 };
       },
       error: (error) => {
         this.message = 'error';
-        this.isCreating = false;
         console.error('Error:', error);
       }
     });
