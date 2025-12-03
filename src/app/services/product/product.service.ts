@@ -7,7 +7,6 @@ export interface ProductRequestDTO {
   name: string;
   description?: string;
   price: number;
-  category?: string;
 }
 
 
@@ -16,7 +15,6 @@ export interface ProductResponseDTO {
   name: string;
   description?: string;
   price: number;
-  category?: string;
 }
 
 @Injectable({

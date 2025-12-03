@@ -14,17 +14,19 @@ export class ProductsComponent {
   private productService = inject(ProductService);
   
   products: ProductResponseDTO[] = [];
+  
 
   ngOnInit() {
-    this.getProducts();
+    this.getProductsFromDatabase();
   }
 
-  getProducts() {
+  getProductsFromDatabase() {
+    console.log('products from database...');
+    
     this.productService.findAllProducts().subscribe({
       next: (productsFromAPI) => {
         console.log('received:', productsFromAPI);
         this.products = productsFromAPI;
-
       },
       error: (error) => {
         console.error('error:', error);
