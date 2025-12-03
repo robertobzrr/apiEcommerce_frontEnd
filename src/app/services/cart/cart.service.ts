@@ -13,13 +13,20 @@ export class CartService {
   ]
 
 
-
-
   constructor() { }
 
   getItems() {
     return this.itens;
   }
+
+  addItens(){
+    //TODO
+  }
+
+  removeItens(){
+    //TODO
+  }
+  
 
 
 }

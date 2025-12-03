@@ -3,22 +3,31 @@
   <h4>Register your product</h4>
 
   <p></p>
-  <form>
-    <div class="mb-3">
-      <label for="nameInput" class="form-label">Name</label>
-      <input type="text" class="form-control" id="nameInput" />
-    </div>
-    <div class="mb-3">
-      <label for="descriptionInput" class="form-label">Description</label>
-      <input type="text" class="form-control" id="descriptionInput" />
-    </div>
-    <div class="mb-3">
-      <label for="priceInput" class="form-label">Price</label>
-      <input type="number" class="form-control" id="priceInput" />
+  <form (ngSubmit)="onSubmit()">
 
+    <div class="mb-3">
+      <label class="form-label">Product</label>
+      <input type="text" class="form-control" [(ngModel)]="product.name" name="name"/>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <input type="text" class="form-control" [(ngModel)]="product.description" name="description"/>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="number" class="form-control" [(ngModel)]="product.price" name="price"/>
       <div class="d-grid gap-2 mt-4">
-        <button class="btn btn-primary" type="submit">Create Product</button>
+        <button class="btn btn-primary" type="submit" [disabled]="isCreating">{{ isCreating ? 'Creating Product...' : 'Create Product' }}</button>
       </div>
     </div>
   </form>
+
+  @if (message) {
+    <div class="mb-3">
+      <div class="alert alert-info">{{ message }}</div>
+    </div>
+  }
+
 </div>
