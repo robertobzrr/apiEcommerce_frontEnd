@@ -96,6 +96,14 @@
     background-color: #5a6268;
 }
 
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
 @media (max-width: 480px) {
     .catalogo {
         padding: 10px;

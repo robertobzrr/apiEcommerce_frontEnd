@@ -43,7 +43,7 @@ export class ProductService {
 
 
   findProductById(id: number): Observable<ProductResponseDTO> {
-    console.log(`Loading product by ID: ${id}`);
+    console.log(`LOading product by ID: ${id}`);
     return this.http.get<ProductResponseDTO>(`${this.apiUrl}/${id}`).pipe(
       tap(product => console.log('loaded:', product))
     );
@@ -51,15 +51,18 @@ export class ProductService {
 
 
   updateProductById(id: number, product: ProductRequestDTO): Observable<void> {
-    console.log(`Updating product with ID: ${id}`, product);
+    console.log(`updating byID: ${id}`, product);
     return this.http.put<void>(`${this.apiUrl}/${id}`, product).pipe(
-      tap(() => console.log(`Product ${id} updated successfully`))
+      tap(() => console.log(`Product ${id} updated`))
     );
   }
 
 
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    console.log(`delete by ID: ${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      tap(() => console.log(`Product ${id} deleteded`))
+    );
   }
 
 }

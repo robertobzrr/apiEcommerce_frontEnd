@@ -44,7 +44,7 @@ export class ProductEditComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Error loading product:', error);
+        console.error('error:', error);
         this.isLoading = false;
       }
     });
@@ -56,12 +56,25 @@ export class ProductEditComponent implements OnInit {
         this.router.navigate(['/products']);
       },
       error: (error) => {
-        console.error('Error updating product:', error);
+        console.error('error:', error);
       }
     });
   }
 
   cancel() {
     this.router.navigate(['/products']);
+  }
+
+  deleteProduct() {
+    if (confirm('product wil lbe deleted')) {
+      this.productService.deleteProduct(this.productId).subscribe({
+        next: () => {
+          this.router.navigate(['/products']);
+        },
+        error: (error) => {
+          console.error('error:', error);
+        }
+      });
+    }
   }
 }
