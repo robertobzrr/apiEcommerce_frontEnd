@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 
 export interface ProductRequestDTO {
@@ -34,7 +35,10 @@ export class ProductService {
 
 
   findAllProducts(): Observable<ProductResponseDTO[]> {
-    return this.http.get<ProductResponseDTO[]>(this.apiUrl);
+    console.log('products from DB');
+    return this.http.get<ProductResponseDTO[]>(this.apiUrl).pipe(
+      tap(products => console.log('received:', products))
+    );
   }
 
 

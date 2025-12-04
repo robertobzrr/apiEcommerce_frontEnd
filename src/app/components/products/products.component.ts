@@ -21,11 +21,8 @@ export class ProductsComponent {
   }
 
   getProducts() {
-    console.log('products from DB');
-    
     this.productService.findAllProducts().subscribe({
       next: (productsFromAPI) => {
-        console.log('received:', productsFromAPI);
         this.products = productsFromAPI;
       },
       error: (error) => {
