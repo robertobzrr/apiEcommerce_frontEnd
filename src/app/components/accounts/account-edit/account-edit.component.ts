@@ -40,7 +40,7 @@ export class AccountEditComponent implements OnInit {
         this.user = {
           name: userResponse.name,
           email: userResponse.email,
-          password: '' // Password field empty for security
+          password: ''
         };
         this.isLoading = false;
       },

@@ -37,7 +37,24 @@ export class AccountService {
   }
 
   findUserById(id: number): Observable<UserResponseDTO> {
-    return this.http.get<UserResponseDTO>(`${this.apiUrl}/${id}`);
+    console.log(`Fetching user by ID: ${id}`);
+    return this.http.get<UserResponseDTO>(`${this.apiUrl}/${id}`).pipe(
+      tap(user => console.log('User found:', user))
+    );
+  }
+
+  updateUserById(id: number, user: UserRequestDTO): Observable<UserResponseDTO> {
+    console.log(`Updating user by ID: ${id}`, user);
+    return this.http.put<UserResponseDTO>(`${this.apiUrl}/${id}`, user).pipe(
+      tap(updatedUser => console.log('User updated successfully:', updatedUser))
+    );
+  }
+
+  deleteUser(id: number): Observable<void> {
+    console.log(`Delete user by ID: ${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      tap(() => console.log(`User ${id} deleted successfully`))
+    );
   }
 
 }
