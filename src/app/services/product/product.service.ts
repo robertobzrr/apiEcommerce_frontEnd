@@ -51,7 +51,10 @@ export class ProductService {
 
 
   updateProductById(id: number, product: ProductRequestDTO): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, product);
+    console.log(`Updating product with ID: ${id}`, product);
+    return this.http.put<void>(`${this.apiUrl}/${id}`, product).pipe(
+      tap(() => console.log(`Product ${id} updated successfully`))
+    );
   }
 
 

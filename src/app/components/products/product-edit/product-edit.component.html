@@ -1,0 +1,32 @@
+<div class="catalogo">
+
+    @if (isLoading) {
+      <div class="product">
+        <h3 class="product-name">Loading...</h3>
+        <p class="description">Loading product data...</p>
+      </div>
+    } @else {
+      <div class="product">
+        <form (ngSubmit)="onSubmit()">
+          <h3 class="product-name">Edit Product</h3>
+          <div class="form-field">
+            <label>Name:</label>
+            <input type="text" [(ngModel)]="product.name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label>Description:</label>
+            <textarea [(ngModel)]="product.description" name="description" rows="3"></textarea>
+          </div>
+          <div class="form-field">
+            <label>Price:</label>
+            <input type="number" [(ngModel)]="product.price" name="price" step="0.01" min="0" required>
+          </div>
+          <div class="product-footer">
+            <button type="submit" class="add-to-cart">💾 Save</button>
+            <button type="button" class="add-to-cart cancel-btn" (click)="cancel()">❌ Cancel</button>
+          </div>
+        </form>
+      </div>
+    }
+
+</div>
