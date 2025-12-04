@@ -1,0 +1,82 @@
+<div class="edit-user">
+  @if (isLoading) {
+    <div class="loading">Loading user...</div>
+  } @else {
+    <h2>Edit User</h2>
+    
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name"
+          [(ngModel)]="user.name" 
+          required 
+          class="form-control"
+          #name="ngModel">
+        @if (name.invalid && name.touched) {
+          <div class="error">Name is required</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email"
+          [(ngModel)]="user.email" 
+          required 
+          email
+          class="form-control"
+          #email="ngModel">
+        @if (email.invalid && email.touched) {
+          <div class="error">
+            @if (email.errors?.['required']) {
+              Email is required
+            } @else if (email.errors?.['email']) {
+              Please enter a valid email
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password"
+          [(ngModel)]="user.password" 
+          required 
+          class="form-control"
+          #password="ngModel"
+          placeholder="Enter new password">
+        @if (password.invalid && password.touched) {
+          <div class="error">Password is required</div>
+        }
+      </div>
+
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          [disabled]="userForm.invalid"
+          class="btn btn-primary">
+          Update User
+        </button>
+        <button 
+          type="button" 
+          (click)="cancel()"
+          class="btn btn-secondary">
+          Cancel
+        </button>
+        <button 
+          type="button" 
+          (click)="deleteUser()"
+          class="btn btn-danger">
+          Delete User
+        </button>
+      </div>
+    </form>
+  }
