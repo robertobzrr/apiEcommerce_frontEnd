@@ -20,11 +20,8 @@ export class AccountsComponent {
   }
 
   getUsers() {
-    console.log('users from DB');
-    
     this.accountService.findAllUsers().subscribe({
       next: (usersFromAPI) => {
-        console.log('received:', usersFromAPI);
         this.users = usersFromAPI;
       },
       error: (error) => {

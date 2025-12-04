@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 export interface UserRequestDTO {
   name: string;
@@ -29,7 +30,10 @@ export class AccountService {
   }
 
   findAllUsers(): Observable<UserResponseDTO[]> {
-    return this.http.get<UserResponseDTO[]>(this.apiUrl);
+    console.log('users from DB');
+    return this.http.get<UserResponseDTO[]>(this.apiUrl).pipe(
+      tap(users => console.log('received:', users))
+    );
   }
 
   findUserById(id: number): Observable<UserResponseDTO> {
