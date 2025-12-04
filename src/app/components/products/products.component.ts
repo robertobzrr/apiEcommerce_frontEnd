@@ -1,5 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, inject } from '@angular/core';
 import { ProductService, ProductResponseDTO } from '../../services/product/product.service';
 import { CommonModule } from '@angular/common';
 
@@ -10,10 +9,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
   private productService = inject(ProductService);
-  private router = inject(Router);
   
   products: ProductResponseDTO[] = [];
   
@@ -31,13 +29,6 @@ export class ProductsComponent implements OnInit {
         console.error('error:', error);
       }
     });
-  }
-
-  viewProduct(productId: number) {
-    alert(`Clicked on product ID: ${productId}`);
-    console.log('viewProduct called with ID:', productId);
-    console.log('Attempting to navigate to:', `/products/${productId}`);
-    this.router.navigate(['/products', productId]);
   }
 
 }
