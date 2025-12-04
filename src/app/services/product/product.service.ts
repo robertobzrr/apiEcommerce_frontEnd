@@ -43,9 +43,9 @@ export class ProductService {
 
 
   findProductById(id: number): Observable<ProductResponseDTO> {
-    console.log(`Loading product with ID: ${id}`);
+    console.log(`Loading product by ID: ${id}`);
     return this.http.get<ProductResponseDTO>(`${this.apiUrl}/${id}`).pipe(
-      tap(product => console.log('Product loaded:', product))
+      tap(product => console.log('loaded:', product))
     );
   }
 

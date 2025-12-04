@@ -31,7 +31,7 @@ export class ProductIdComponent implements OnInit {
         this.product = product;
       },
       error: (error) => {
-        console.error('Error loading product:', error);
+        console.error('error:', error);
       }
     });
   }
