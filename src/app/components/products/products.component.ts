@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService, ProductResponseDTO } from '../../services/product/product.service';
+import { CartService } from '../../services/cart/cart.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class ProductsComponent {
 
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
   private router = inject(Router);
   
   products: ProductResponseDTO[] = [];
@@ -35,6 +37,10 @@ export class ProductsComponent {
 
   editProduct(productId: number) {
     this.router.navigate(['/products/edit', productId]);
+  }
+
+  addToCart(product: ProductResponseDTO) {
+    this.cartService.addItem(product);
   }
 
 }
