@@ -42,15 +42,6 @@ export class CartService {
     this.items = this.items.filter(item => item.id !== productId);
   }
 
-  updateQuantity(productId: number, quantity: number): void {
-    const item = this.items.find(item => item.id === productId);
-    if (item) {
-      item.quantity = quantity;
-      if (item.quantity <= 0) {
-        this.removeItem(productId);
-      }
-    }
-  }
 
   getTotalPrice(): number {
     return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);

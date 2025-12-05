@@ -30,10 +30,7 @@ export class CartComponent implements OnInit {
     this.loadCartItems();
   }
 
-  updateQuantity(productId: number, quantity: number) {
-    this.cartService.updateQuantity(productId, quantity);
-    this.loadCartItems();
-  }
+
 
   checkout() {
     if (this.cartItems.length === 0) {
