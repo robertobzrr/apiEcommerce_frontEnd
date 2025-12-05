@@ -30,8 +30,6 @@ export class CartComponent implements OnInit {
     this.loadCartItems();
   }
 
-
-
   checkout() {
     if (this.cartItems.length === 0) {
       alert('cart empty');
