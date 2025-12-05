@@ -41,6 +41,7 @@ export class ProductsComponent {
 
   addToCart(product: ProductResponseDTO) {
     this.cartService.addItem(product);
+    alert('Product add to cart');
   }
 
 }
