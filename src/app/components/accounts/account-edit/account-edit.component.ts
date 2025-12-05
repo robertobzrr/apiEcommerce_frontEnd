@@ -45,7 +45,7 @@ export class AccountEditComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Error loading user:', error);
+        console.error('error loading user:', error);
         this.isLoading = false;
       }
     });
@@ -57,7 +57,7 @@ export class AccountEditComponent implements OnInit {
         this.router.navigate(['/accounts']);
       },
       error: (error) => {
-        console.error('Error updating user:', error);
+        console.error('error update:', error);
       }
     });
   }
@@ -67,13 +67,13 @@ export class AccountEditComponent implements OnInit {
   }
 
   deleteUser() {
-    if (confirm('User will be deleted. Are you sure?')) {
+    if (confirm('delete user?')) {
       this.accountService.deleteUser(this.userId).subscribe({
         next: () => {
           this.router.navigate(['/accounts']);
         },
         error: (error) => {
-          console.error('Error deleting user:', error);
+          console.error('error:', error);
         }
       });
     }
