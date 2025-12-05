@@ -1,30 +1,40 @@
 
 <div class="cart-container">
   <h2>Cart</h2>
-  <table class="cart-table">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="item-name">Product A</td>
-        <td class="item-price">R$ 19.90</td>
-      </tr>
-      <tr>
-        <td class="item-name">Product B</td>
-        <td class="item-price">R$ 45.50</td>
-      </tr>
-    </tbody>
-  </table>
   
-  <div class="order-total-container">
-    <div class="order-total">
-      <span class="total-label">Total:</span>
-      <span class="total-value">R$ 85.30</span>
+  @if (cartItems.length === 0) {
+    <div class="empty-cart">
+      <p>cart empty</p>
+      <p>add products to continue</p>
     </div>
-  </div>
-  <button class="checkout-button add-to-cart">Checkout</button>
+  } @else {
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of cartItems; track item.id) {
+          <tr>
+            <td class="item-name">{{ item.name }}</td>
+            <td class="item-price">R$ {{ item.price.toFixed(2) }}</td>
+            <td class="item-actions">
+              <button class="remove-btn" (click)="removeFromCart(item.id)">Remove</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    
+    <div class="order-total-container">
+      <div class="order-total">
+        <span class="total-label">Total:</span>
+        <span class="total-value">R$ {{ totalPrice.toFixed(2) }}</span>
+      </div>
+    </div>
+    <button class="checkout-button" (click)="checkout()">Checkout</button>
+  }
 </div>
