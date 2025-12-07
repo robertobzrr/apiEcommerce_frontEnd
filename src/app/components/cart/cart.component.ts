@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
       return;
     }
     
-    alert(`Cart finished! Total: R$ ${this.totalPrice.toFixed(2)}`);
+    alert(`Total: R$ ${this.totalPrice.toFixed(2)}`);
     this.cartService.clearCart();
     this.loadCartItems();
   }

@@ -17,7 +17,10 @@
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cart">Cart</a>
+          <a class="nav-link" routerLink="/cart">
+            Cart 
+            <span class="cart-counter" *ngIf="cartItemCount > 0">({{ cartItemCount }})</span>
+          </a>
         </li>
 
       </ul>
